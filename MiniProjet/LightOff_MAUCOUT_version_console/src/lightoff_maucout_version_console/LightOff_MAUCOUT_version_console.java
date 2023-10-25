@@ -24,7 +24,8 @@ public class LightOff_MAUCOUT_version_console {
      
      Cellule2.activerCellule();
      Cellule2.toString();
-     
+      Cellule2.activerCellule();
+     Cellule2.toString();
     }
     
 }

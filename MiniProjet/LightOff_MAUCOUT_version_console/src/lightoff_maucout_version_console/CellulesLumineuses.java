@@ -25,7 +25,7 @@ public class CellulesLumineuses {
         if (etat==true){
             etat= false;
         }
-        if(etat==false){
+        else{
             etat=true;
         }
     
