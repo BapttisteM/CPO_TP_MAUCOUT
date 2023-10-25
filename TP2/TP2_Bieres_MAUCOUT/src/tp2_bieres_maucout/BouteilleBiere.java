@@ -25,7 +25,7 @@ uneBrasserie) {
  nom = unNom;
  degreAlcool = unDegre;
  brasserie = uneBrasserie;
- ouverte = true;
+ ouverte = false;
  
 }
 public void Decapsuler(){

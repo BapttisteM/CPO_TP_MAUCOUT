@@ -26,7 +26,7 @@ public class TP2_Bieres_MAUCOUT {
 
    
     secondBiere.lireEtiquette();
-    uneBiere.Decapsuler();
+    secondBiere.Decapsuler();
     
     
      BouteilleBiere troisBiere = new BouteilleBiere("La bete", 8 , "tire bouchon") ;
