@@ -15,17 +15,22 @@ public class LightOff_MAUCOUT_version_console {
      */
     public static void main(String[] args) {
      
-     CellulesLumineuses Cellule1 = new CellulesLumineuses(true);   
-     CellulesLumineuses Cellule2 = new CellulesLumineuses(false);  
-     CellulesLumineuses Cellule3 = new CellulesLumineuses(true); 
-     
-     boolean etat1 =Cellule1.getEtat();
-     
-     
-     Cellule2.activerCellule();
-     Cellule2.toString();
-      Cellule2.activerCellule();
-     Cellule2.toString();
-    }
     
+     
+     
+     
+     
+     
+     
+       
+      
+
+        Partie partie1= new Partie();
+        
+        partie1.initialiserPartie();
+        partie1.lancerPartie();
+      
+    }
+   
+
 }

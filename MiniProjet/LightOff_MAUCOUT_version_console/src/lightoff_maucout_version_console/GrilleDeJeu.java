@@ -8,8 +8,8 @@ import static java.lang.Math.random;
 import java.util.Random;
 
 /**
- *  reprÃ©sente une grille de cellules lumineuses. Cette grille est
-    constituÃ©e de cellules lumineuses organisÃ©es en lignes et colonnes
+ *  représente une grille de cellules lumineuses. Cette grille est
+    constituée de cellules lumineuses organisées en lignes et colonnes
  * @author User
  */
 public class GrilleDeJeu {
@@ -18,6 +18,12 @@ public class GrilleDeJeu {
      int nbColonnes;
 
     // Constructeur
+
+    /**
+     *cree une matrice contenant des cellules lumineuses sur toutes ses lignes et diagonales
+     * @param p_nbLignes
+     * @param p_nbColonnes
+     */
     public GrilleDeJeu(int p_nbLignes, int p_nbColonnes) {
         nbLignes = p_nbLignes;
         nbColonnes = p_nbColonnes;
@@ -32,22 +38,27 @@ public class GrilleDeJeu {
         
     }    
 }
-public boolean eteindreToutesLesCellules(){
+
+    /**
+     *parcourt les cases du tableau et renvoie false si chaques cellules est eteinte
+     * @return boolean
+     */
+    public boolean eteindreToutesLesCellules(){
         
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                matriceCellules[i][j].eteindreCellule();
+                matriceCellules[i][j].estEteint();
             }
         }
         return false;
     }
 
-
-
-    
+    /**
+     *Active une ligne ou une colonne aleatoirement 
+     */
     public void activerLigneColonneOuDiagonaleAleatoire() {
         Random random = new Random();
-        int choix = random.nextInt(3);  // GÃ©nÃ¨re un nombre alÃ©atoire entre 0 et 2
+        int choix = random.nextInt(3);  // Génère un nombre aléatoire entre 0 et 2
 
         switch (choix) {
             case 0:
@@ -60,12 +71,16 @@ public boolean eteindreToutesLesCellules(){
                 activerDiagonaleAleatoire();
                 break;
             default:
-                // Ne devrait pas arriver, mais tu peux ajouter une gestion d'erreur si nÃ©cessaire
+                // Ne devrait pas arriver, mais tu peux ajouter une gestion d'erreur si nécessaire
                 break;
         }
     }
 
-    // MÃ©thode pour activer une ligne alÃ©atoire
+    
+
+    /**
+     * active une ligne aléatoire
+     */
     public void activerLigneAleatoire() {
         Random random = new Random();
         int ligne = random.nextInt(nbLignes);
@@ -75,7 +90,11 @@ public boolean eteindreToutesLesCellules(){
         }
     }
 
-    // MÃ©thode pour activer une colonne alÃ©atoire
+    
+
+    /**
+     *active une colonne aléatoire
+     */
     public void activerColonneAleatoire() {
         Random random = new Random();
         int colonne = random.nextInt(nbColonnes);
@@ -85,10 +104,14 @@ public boolean eteindreToutesLesCellules(){
         }
     }
 
-    // MÃ©thode pour activer une diagonale alÃ©atoire
+    
+
+    /**
+     *activer une diagonale aléatoire
+     */
     public void activerDiagonaleAleatoire() {
         Random random = new Random();
-        int sens = random.nextInt(2);  // 0 pour diagonale de gauche Ã  droite, 1 pour diagonale de droite Ã  gauche
+        int sens = random.nextInt(2);  // 0 pour diagonale de gauche à droite, 1 pour diagonale de droite à gauche
 
         if (sens == 0) {
             for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
@@ -100,7 +123,12 @@ public boolean eteindreToutesLesCellules(){
             }
         }
     }
-public void melangerMatriceAleatoirement(int nbTours){
+
+    /**
+     *Melange la matrice en appelant la fonction activerLigneColonneOuDiagonaleAleatoire un certain nombre de fois 
+     * @param nbTours
+     */
+    public void melangerMatriceAleatoirement(int nbTours){
     eteindreToutesLesCellules();
     for (int i=0; i<nbTours; i++){
         
@@ -108,7 +136,12 @@ public void melangerMatriceAleatoirement(int nbTours){
         
     }
 }
-public void activerLigneDeCellules(int idLigne){
+
+    /**
+     *Actives une ligne de cellules
+     * @param idLigne
+     */
+    public void activerLigneDeCellules(int idLigne){
      
     int ligne = idLigne;
     for (int j = 0; j < nbColonnes; j++) {
@@ -116,34 +149,51 @@ public void activerLigneDeCellules(int idLigne){
         }
     
 }
-public void activerColonneDeCellules(int idColonnes){
+
+    /**
+     *Active une colonnes de cellules
+     * @param idColonnes
+     */
+    public void activerColonneDeCellules(int idColonnes){
     int ligne = idColonnes;
     for (int j = 0; j < nbLignes; j++) {
             matriceCellules[j][ligne].activerCellule();
         }
 }
- public void activerDiagonaleDescendante() {
+
+    /**
+     *Active la diagonale descendante
+     */
+    public void activerDiagonaleDescendante() {
         for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
             matriceCellules[i][i].activerCellule();
         }
     }
 
-    // MÃ©thode pour activer la diagonale montante
+    
+
+    /**
+     *Active la diagonale montante
+     */
     public void activerDiagonaleMontante() {
         for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
             matriceCellules[i][nbColonnes - i - 1].activerCellule();
         }
     }
     
- public boolean cellulesToutesEteintes() {
+    /**
+     *verifie que les cellules sont eteintes retourne false s'il y en a une allumee et true si elles sont toutes eteintes
+     * @return boolean
+     */
+    public boolean cellulesToutesEteintes() {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 if (matriceCellules[i][j].estAllumee()) {
-                    return false; // S'il y a au moins une cellule allumÃ©e, retourne false
+                    return false; // S'il y a au moins une cellule allumée, retourne false
                 }
             }
         }
-        return true; // Si aucune cellule n'est allumÃ©e, retourne true
+        return true; // Si aucune cellule n'est allumée, retourne true
     }
  
  
@@ -160,7 +210,7 @@ public void activerColonneDeCellules(int idColonnes){
         }
         result.append("\n");
 
-        // Affichage de la ligne de sÃ©paration
+        // Affichage de la ligne de séparation
         result.append(new String(new char[4 * nbColonnes + 2]).replace('\0', '-')).append("\n");
 
         // Affichage des cellules avec indices de lignes
@@ -170,7 +220,7 @@ public void activerColonneDeCellules(int idColonnes){
                 result.append(" ").append(matriceCellules[i][j].estAllumee() ? "X" : "O").append(" |");
             }
             result.append("\n");
-            // Affichage de la ligne de sÃ©paration
+            // Affichage de la ligne de séparation
             result.append(new String(new char[4 * nbColonnes + 2]).replace('\0', '-')).append("\n");
         }
 

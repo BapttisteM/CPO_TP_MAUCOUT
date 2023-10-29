@@ -5,16 +5,22 @@
 package lightoff_maucout_version_console;
 
 /**
- *reprÃ©sente une cellule lumineuse qui peut Ãªtre dans l'Ã©tat
-  "allumÃ©e" ou "Ã©teinte".
+ *représente une cellule lumineuse qui peut être dans l'état
+  "allumée" ou "éteinte".
  * @author User
  */
 public class CellulesLumineuses {
    private boolean etat= true;
    
- public CellulesLumineuses(boolean etat){
+    /**
+     *definit les cellules lumineuse a l'etat eteinte.
+     * @param par
+     */
+    public CellulesLumineuses(boolean par){
     etat = false;
 }
+
+   
 
     /**
      *Permet de faire changer l'etat d'une cellule en fonction deson etat actuel
@@ -56,7 +62,19 @@ public class CellulesLumineuses {
              return false;
          }
     }
-    
+
+    /**
+     *regardes si la cellule est  allumee et renvoie true si c'est le cas.
+     * @return
+     */
+    public boolean estAllumee(){
+         if(etat==true){
+             return true;
+         }
+         else{
+             return false;
+         }
+    }
     /**
      *permet de donner l'etat de la cellule
      * @return true ou false
@@ -85,5 +103,13 @@ public class CellulesLumineuses {
        return null;
     }   
      
-    
+   
+      
+  
 }
+
+
+
+
+    
+
