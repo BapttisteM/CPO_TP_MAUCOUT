@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import lightoff_maucout_version_console.CelluleGraphique;
 import lightoff_maucout_version_console.GrilleDeJeu;
+import javax.swing.JFrame;
 
 /**
  *
@@ -24,6 +25,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         int i;
         int j;
         boolean partieterminee = false;
+       
       
     /**
      * Creates new form FenetrePrincipale
@@ -32,6 +34,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         initComponents();
       nbColonne=nbColonnes;
       nbLigne=nbLignes;
+      this.setLocationRelativeTo(null);
+      this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+     
         
         this.grille = new GrilleDeJeu(nbLignes,nbColonnes);
      //   getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20,
@@ -66,7 +71,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
      // création du panneau de boutons verticaux (pour les lignes)
  for (i = 0; i < nbLignes; i++) {
- JButton bouton_ligne = new JButton();
+ JButton bouton_ligne = new JButton(""+i);
  ActionListener ecouteurClick = new ActionListener() {
     final int j = i;
  @Override
@@ -75,26 +80,26 @@ public class FenetrePrincipale extends javax.swing.JFrame {
  nbCoups=nbCoups+1;   
 grille.activerLigneDeCellules(j);
 repaint();
-label1.setText("le nombre de coups est de:"+nbCoups+"/"+nbCoup);
+Label1.setText("le nombre de coups est de:"+nbCoups+"/"+nbCoup);
 
 
 if(nbCoup==nbCoups){
     FenetreDefaite d = new FenetreDefaite();
     d.setVisible(true);
-    this.dispose();
+    FenetrePrincipale.this.dispose();
+            
  }
 
 if(grille.cellulesToutesEteintes()==true){
       FenetreVictoire f = new FenetreVictoire();
       f.setVisible(true);
-     this.dispose();
+     FenetrePrincipale.this.dispose();
      
   }
 }
 
-     private void dispose() {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-     }
+    
+
 
     
  
@@ -113,7 +118,7 @@ if(grille.cellulesToutesEteintes()==true){
 
      // création du panneau de boutons verticaux (pour les lignes)
  for (j = 0; j < nbColonnes; j++) {
- JButton bouton_colonne = new JButton();
+ JButton bouton_colonne = new JButton(""+j);
  ActionListener ecouteurClick = new ActionListener() {
     final int i= j;
  @Override
@@ -124,16 +129,18 @@ if(grille.cellulesToutesEteintes()==true){
  grille.activerColonneDeCellules(i);
 repaint();
 
-label1.setText("le nombre de coups est de:"+nbCoups+"/"+nbCoup);
+Label1.setText("le nombre de coups est de:"+nbCoups+"/"+nbCoup);
  
 if(nbCoup==nbCoups){
     FenetreDefaite d = new FenetreDefaite();
     d.setVisible(true);
+    FenetrePrincipale.this.dispose();
  }    
  
 if(grille.cellulesToutesEteintes()==true){
       FenetreVictoire f = new FenetreVictoire();
       f.setVisible(true);
+      FenetrePrincipale.this.dispose();
      
      
   }
@@ -170,19 +177,66 @@ public void AfficherMessage(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jFrame2 = new javax.swing.JFrame();
         PanneauGrille = new javax.swing.JPanel();
         PanneauBoutonsVerticaux = new javax.swing.JPanel();
         PanneauBoutonsHorizontaux = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        label1 = new java.awt.Label();
+        Label1 = new java.awt.Label();
         jButton3 = new javax.swing.JButton();
+
+        jFrame1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jFrame1PropertyChange(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(480, 450));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanneauGrille.setBackground(new java.awt.Color(51, 255, 51));
+        PanneauGrille.setBackground(java.awt.Color.blue);
+        PanneauGrille.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                PanneauGrillePropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanneauGrilleLayout = new javax.swing.GroupLayout(PanneauGrille);
         PanneauGrille.setLayout(PanneauGrilleLayout);
@@ -243,8 +297,13 @@ public void AfficherMessage(){
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 70, 40));
 
-        label1.setText("label1");
-        getContentPane().add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 280, 60));
+        Label1.setText("label1");
+        Label1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                Label1PropertyChange(evt);
+            }
+        });
+        getContentPane().add(Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 280, 60));
 
         jButton3.setText("Arreter la partie");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -275,6 +334,21 @@ public void AfficherMessage(){
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void Label1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_Label1PropertyChange
+       Label1.setText("Nombre de coups: 0");
+    }//GEN-LAST:event_Label1PropertyChange
+
+    private void jFrame1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jFrame1PropertyChange
+       
+         
+            
+        
+    }//GEN-LAST:event_jFrame1PropertyChange
+
+    private void PanneauGrillePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_PanneauGrillePropertyChange
+this.setLocationRelativeTo(null);
+    }//GEN-LAST:event_PanneauGrillePropertyChange
 
     /**
      * @param args the command line arguments
@@ -313,12 +387,16 @@ public void AfficherMessage(){
    // }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Label Label1;
     private javax.swing.JPanel PanneauBoutonsHorizontaux;
     private javax.swing.JPanel PanneauBoutonsVerticaux;
     private javax.swing.JPanel PanneauGrille;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private java.awt.Label label1;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -61,6 +61,7 @@ public class GrilleDeJeu {
     public void activerLigneColonneOuDiagonaleAleatoire() {
         Random random = new Random();
         int choix = random.nextInt(3);  // Génère un nombre aléatoire entre 0 et 2
+       
 
         switch (choix) {
             case 0:
@@ -239,8 +240,8 @@ public class GrilleDeJeu {
 
         return result.toString();
     }
-}
 
+}
 
 
 
