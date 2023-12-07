@@ -25,9 +25,9 @@ public class LightOff_MAUCOUT_version_console {
        
       
 
-        Partie partie1= new Partie();
+       // Partie partie1= new Partie();
         
-        partie1.choisirNiveau();
+       // partie1.choisirNiveau();
       
     }
    
